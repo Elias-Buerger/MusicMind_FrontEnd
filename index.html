@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <meta name="google-site-verification" content="XYChNIezFvjaTCkXAuxjKkqeqoOegWSlSuib2q13C2E" />
+
+    <meta name="author" content="Elias Buerger">
+    <meta name="publisher" content="Elias Buerger">
+    <meta name="copyright" content="Elias Buerger">
+
+    <meta name="keywords"
+          content="musicmind,music mind,music,sound generator,music generator,sound,generator,sound snippet,personality,personality generator,AI,artificial intelligence">
+    <meta name="description"
+          content="MusicMind is a tool that generates a short music track based on your personality.">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+
+    <title>Music Mind Project - Your Personality Music Generator</title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="manifest" href="images/icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#2a2a2a">
+    <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#2a2a2a">
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <script src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+    <script src="js/index.js"></script>
+    <iframe id="download" style="display: none;"></iframe>
+</head>
+<body>
+<section id="section-header" class="light d-none d-lg-block">
+    <a id="section-header-a-1" href="explore.html">Explore</a>
+    <a id="section-header-a-2" class="scrollto" scrollto="section-whatisthis">What is this?</a>
+    <a id="section-header-a-3" class="scrollto" scrollto="section-about">About</a>
+</section>
+<section id="section-main" class="dark">
+    <div id="section-main-animation-object-container">
+        <div id="section-main-question" class="row">
+            <h3>...</h3>
+        </div>
+        <div id="section-main-answers" class="row">
+            <div class="col text-center">
+                <button class="section-main-answers-button">
+                    <div id="section-main-answer-1"></div>
+                </button>
+            </div>
+            <div class="col text-center">
+                <button class="section-main-answers-button">
+                    <div id="section-main-answer-2"></div>
+                </button>
+            </div>
+            <div class="col text-center">
+                <button class="section-main-answers-button">
+                    <div id="section-main-answer-3"></div>
+                </button>
+            </div>
+            <div class="col text-center">
+                <button class="section-main-answers-button">
+                    <div id="section-main-answer-4"></div>
+                </button>
+            </div>
+            <div class="col text-center">
+                <button class="section-main-answers-button">
+                    <div id="section-main-answer-5"></div>
+                </button>
+            </div>
+        </div>
+        <div id="section-main-text" class="row justify-content-between">
+            <p>I do NOT agree</p>
+            <p>I agree</p>
+        </div>
+        <div id="section-main-progress" class="row">
+            <div class="col progressbar-back">
+                <div class="progressbar-front progress-bar-striped" role="progressbar">‌
+                </div>
+            </div>
+        </div>
+        <div id="section-main-back" class="row">
+            <a id="section-main-form-back">← back</a>
+        </div>
+        <div id="section-main-headline" class="row">
+            <h2>Your Personality:</h2>
+        </div>
+        <div id="section-main-personality">
+            <div class="row">
+                <div class="col-1">
+                    <i class="material-icons">star</i>
+                </div>
+                <div class="col-10">
+                    <div class="progressbar-back" data-toggle="tooltip" data-placement="top"
+                         title="This trait features characteristics such as imagination and insight, and those high in this trait also tend to have a broad range of interests.">
+                        <div id="section-main-personality-openness" class="personality-openness progressbar-front"
+                             role="progressbar">‌
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <i class="material-icons">star_border</i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <i class="material-icons">shuffle</i>
+                </div>
+                <div class="col-10">
+                    <div class="progressbar-back" data-toggle="tooltip" data-placement="top"
+                         title="Standard features of this dimension include high levels of thoughtfulness, with good impulse control and goal-directed behaviors.">
+                        <div id="section-main-personality-conscientiousness"
+                             class="personality-conscientiousness progressbar-front" role="progressbar">‌
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <i class="material-icons">list</i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <i class="material-icons">person</i>
+                </div>
+                <div class="col-10">
+                    <div class="progressbar-back" data-toggle="tooltip" data-placement="top"
+                         title="Extraversion is characterized by excitability, sociability, talkativeness, assertiveness, and high amounts of emotional expressiveness.">
+                        <div id="section-main-personality-extraversion"
+                             class="personality-extraversion progressbar-front" role="progressbar">‌
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <i class="material-icons">person_add</i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <i class="material-icons">lock_outline</i>
+                </div>
+                <div class="col-10">
+                    <div class="progressbar-back" data-toggle="tooltip" data-placement="top"
+                         title="This personality dimension includes attributes such as trust, altruism, kindness, affection, and other prosocial behaviors.">
+                        <div id="section-main-personality-agreeableness"
+                             class="personality-agreeableness progressbar-front" role="progressbar">‌
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <i class="material-icons">lock_open</i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-1">
+                    <i class="material-icons">mood</i>
+                </div>
+                <div class="col-10">
+                    <div class="progressbar-back" data-toggle="tooltip" data-placement="top"
+                         title="Individuals who are high in this trait tend to experience mood swings, anxiety, irritability and sadness. Those low in this trait tend to be more stable and emotionally resilient.">
+                        <div id="section-main-personality-neuroticism" class="personality-neuroticism progressbar-front"
+                             role="progressbar">‌
+                        </div>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <i class="material-icons">mood_bad</i>
+                </div>
+            </div>
+        </div>
+        <div id="section-main-info" class="row">
+            <p>
+                You can find more info about your personality
+                <a title="show personality" class="scrollto" scrollto="section-personality">here</a>
+            </p>
+        </div>
+        <div id="section-main-name" class="row justify-content-center">
+            <div class="col-auto">
+                <div class="row">
+                    <input class="col-auto" id="section-main-name-input" type="text" name="name" placeholder="Name"/>
+                    <button class="col-auto" id="section-main-name-done">
+                        <p>🢂</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div id="section-main-brain" class="row">
+            <img src="images/brain.png"/>
+        </div>
+        <div id="section-main-title">
+            <h1>Music Mind<br/>Project</h1>
+        </div>
+        <div id="section-main-button" class="row">
+            <button>
+                <p>Get started &rarr;</p>
+            </button>
+        </div>
+    </div>
+</section>
+<section id="section-whatisthis" class="light">
+    <div class="content">
+        <h2>What is this ?</h2>
+        <hr>
+        <p>
+            MusicMind is a tool that generates a short music track based on your personality.
+            It works by first asking you a few questions about yourself to get a brief insight into your
+            characteristics.
+            Based on this information it will generate a music snippet that suits you. But what can you use
+            it
+            for?
+            Maybe you just want to show it to your friends or use it as a ring tone, but if you want to you
+            can
+            even
+            use it for your own projects!
+            It‘s totally up to you!
+        </p>
+    </div>
+</section>
+<section id="section-personality" class="light">
+    <div class="content">
+        <div class="row">
+            <div id="section-personality-1" class="col-md-6 col-xl-4 section-personality-content">
+                <h2>Personality</h2>
+                <hr>
+            </div>
+            <div id="section-personality-2" class="col-md-6 col-xl-4 section-personality-content">
+                <i class="material-icons">star_border</i>
+                <hr class="personality-openness"/>
+                <h3>Openness:</h3>
+                <p>
+                    This trait features characteristics
+                    such as imagination and insight,
+                    and those high in this trait also
+                    tend to have a broad range of interests.
+                </p>
+            </div>
+            <div id="section-personality-3" class="col-md-6 col-xl-4 section-personality-content">
+                <i class="material-icons">list</i>
+                <hr class="personality-conscientiousness"/>
+                <h3>Conscientiousness:</h3>
+                <p>
+                    Standard features of this dimension
+                    include high levels of thoughtfulness,
+                    with good impulse control and
+                    goal-directed behaviors.
+                </p>
+            </div>
+            <div id="section-personality-4" class="col-md-6 col-xl-4 section-personality-content">
+                <i class="material-icons">person</i>
+                <hr class="personality-extraversion"/>
+                <h3>Extraversion:</h3>
+                <p>
+                    Extraversion is characterized by
+                    excitability, sociability, talkativeness,
+                    assertiveness, and high amounts of
+                    emotional expressiveness.
+                </p>
+            </div>
+            <div id="section-personality-5" class="col-md-6 col-xl-4 section-personality-content">
+                <i class="material-icons">lock_outline</i>
+                <hr class="personality-agreeableness"/>
+                <h3>Agreeableness:</h3>
+                <p>
+                    This personality dimension includes
+                    attributes such as trust, altruism, kindness,
+                    affection, and other prosocial behaviors.
+                </p>
+            </div>
+            <div id="section-personality-6" class="col-md-6 col-xl-4 section-personality-content">
+                <i class="material-icons">mood</i>
+                <hr class="personality-neuroticism"/>
+                <h3>Neuroticism:</h3>
+                <p>
+                    Individuals who are high in this trait tend to
+                    experience mood swings, anxiety, irritability
+                    and sadness. Those low in this trait tend to
+                    be more stable and emotionally resilient.
+                </p>
+            </div>
+        </div>
+        <p>
+            <br/>
+            <br/>
+            Read more about the big five
+            <a target='_blank'
+               href='https://en.wikipedia.org/wiki/Big_Five_personality_traits'
+               title='More about the big five'>here
+            </a>
+            .
+        </p>
+    </div>
+</section>
+<section id="section-statistics" class="dark">
+    <div class="content">
+        <div class="row">
+            <div class="col">
+                <i class="material-icons">mouse</i>
+                <h3 id="section-statistics-pageclicks">...</h3>
+                <p>Total Page Clicks</p>
+            </div>
+            <div class="col">
+                <i class="material-icons">music_note</i>
+                <h3 id="section-statistics-personalitycount">...</h3>
+                <p>Generated Snippets and Personalities</p>
+            </div>
+            <div class="col">
+                <i class="material-icons">share</i>
+                <h3 id="section-statistics-shared">...</h3>
+                <p>Shared Music Pieces</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="section-about" class="light">
+    <div class="content">
+        <h2>About</h2>
+        <hr>
+        <p>
+            The idea of MusicMind first came up when our team brainstormed
+            for new project ideas, it was amongst five or six others.
+            But in the end the combination of music, AI and social interactions
+            was made MusicMind most intriguing for us. At first it all started pretty small
+            by just designing some UI elements and informing ourselves about different ways to
+            interpret a user’s personality. Soon after that we started planning the whole thing out
+            and, since we all are still students, will continuously update and improve the product.
+        </p>
+    </div>
+</section>
+<section id="section-contact" class="light">
+    <div class="content">
+        <h2>Contact us</h2>
+        <hr>
+        <form id="section-contact-form"
+              action="https://www.musicmindproject.com:8443/backend/rest/contact"
+              data-toggle="validator">
+            <div class="row">
+                <input id="section-contact-text-1"
+                       tabindex="1"
+                       type="text"
+                       name="name"
+                       placeholder="Name"
+                       required pattern="[A-Za-z 0-9]{1,}"/>
+            </div>
+            <div class="row">
+                <input id="section-contact-text-2"
+                       tabindex="2"
+                       name="email"
+                       placeholder="Email"
+                       type="email"
+                       required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"/>
+            </div>
+            <div class="row">
+                <input id="section-contact-text-3"
+                       tabindex="3"
+                       type="text"
+                       name="subject"
+                       placeholder="Subject"
+                       required pattern=".{1,}"/>
+            </div>
+            <div class="row">
+            <textarea id="section-contact-text-4"
+                      tabindex="4"
+                      name="comment"
+                      placeholder="Message">
+                </textarea>
+            </div>
+            <div class="row">
+                <button class="button-rect" value="send" type="submit">
+                    <p>Send Message</p>
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+<section id="section-footer">
+    <div class="medium">
+        <div id="section-footer-top">
+            <div class="row">
+                <div class="col">
+                    <a target="_blank"
+                       title="Facebook"
+                       href="https://www.facebook.com/musicmindprjct">
+                        <i class="fab fa-facebook-f fa-2x"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a target="_blank"
+                       title="Twitter"
+                       href="https://twitter.com/musicmindprjct">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                </div>
+                <div class="col">
+                    <a target="_blank"
+                       title="Instagram"
+                       href="https://www.instagram.com/musicmindproject">
+                        <i class="fab fa-instagram fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dark">
+        <div id="section-footer-bottom">
+            <p>© Copyright 2017 MusicMind - Linz, Austria</p>
+        </div>
+    </div>
+</section>
+<section id="section-modal" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="section-modal-title">...</h3>
+            </div>
+            <div class="modal-body">
+                <p id="section-modal-text">...</p>
+            </div>
+            <div class="modal-footer">
+                <button id="section-modal-button" type="button" class="btn" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

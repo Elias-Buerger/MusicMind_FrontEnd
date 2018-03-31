@@ -1,0 +1,643 @@
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*SM*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+
+/*-------------------------------------------------------------*/
+/*Text Management*/
+/*-------------------------------------------------------------*/
+
+h1, h2, h3, p, a {
+    font-family: Roboto !important;
+
+}
+
+h1, h2, h3, a {
+    font-weight: bold !important;
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}
+
+h1 {
+    font-size: 50px !important;
+}
+
+h2 {
+    font-size: 28px !important;
+}
+
+h3 {
+    font-size: 22px !important;
+}
+
+p {
+    font-size: 16px !important;
+}
+
+a {
+    font-size: 16px !important;
+    text-decoration: underline !important;
+    color: #303030 !important;
+    cursor: pointer;
+}
+
+i {
+    font-size: 32px !important;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/*-------------------------------------------------------------*/
+/*Color and general component Management*/
+/*-------------------------------------------------------------*/
+
+.row {
+    margin: 0px !important;
+}
+
+.personality-openness {
+    background-color: #2ECC71 !important;
+    color: #2ECC71;
+}
+
+.personality-conscientiousness {
+    background-color: #F1C40F !important;
+    color: #F1C40F;
+}
+
+.personality-extraversion {
+    background-color: #E74C3C !important;
+    color: #E74C3C;
+}
+
+.personality-agreeableness {
+    background-color: #9B59B6 !important;
+    color: #9B59B6;
+}
+
+.personality-neuroticism {
+    background-color: #3498DB !important;
+    color: #3498DB;
+}
+
+.content {
+    margin: 50px 25px 50px 25px;
+}
+
+hr {
+    width: 50px;
+    height: 5px !important;
+}
+
+.light {
+    background-color: #FFFFFF;
+    color: #303030;
+    overflow: hidden;
+}
+
+.light hr{
+    background-color: #303030;
+}
+
+.medium {
+    background-color: #F5F5F5;
+    color: #303030;
+    overflow: hidden;
+}
+
+.dark {
+    background: linear-gradient(
+            rgba(0, 0, 0, 0.65),
+            rgba(0, 0, 0, 0.65)
+    ), url(../images/background.jpg) repeat 0 0 fixed;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
+.dark hr{
+    background-color: #FFFFFF;
+}
+
+.progressbar-back {
+    background-color: transparent;
+    border: white solid;
+    text-align: center;
+    height: 30px;
+    padding: 0px !important;
+}
+
+.progressbar-front {
+    background-color: #303030;
+    border: transparent;
+    width: 0px;
+    height: 100%;
+}
+
+/*-------------------------------------------------------------*/
+/*Header*/
+/*-------------------------------------------------------------*/
+
+#section-header {
+    position: fixed;
+    will-change: transform;
+    z-index: 1000;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 65px;
+    box-shadow: 0 2px 15px #303030;
+}
+
+#section-header a {
+    float: right;
+    margin: 18px 50px 0px 0px;
+    text-decoration: none !important;
+    font-weight: bold !important;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-header a:hover {
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-header-a-1:hover {
+    color: #2ECC71 !important;
+}
+
+#section-header-a-2:hover {
+    color: #F1C40F !important;
+}
+
+#section-header-a-3:hover {
+    color: #9B59B6 !important;
+}
+
+/*-------------------------------------------------------------*/
+/*Main*/
+/*-------------------------------------------------------------*/
+
+#section-main {
+    height: 100vh;
+}
+
+#section-main-animation-object-container {
+    display: none;
+}
+
+#section-main-brain {
+    width: 100%;
+    height: 40vh;
+    padding: 50px 25px 0px 25px;
+}
+
+#section-main-brain img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: auto;
+}
+
+#section-main-title {
+    width: 100%;
+    height: 30vh;
+    padding: 25px;
+}
+
+#section-main-button {
+    width: 100%;
+    height: 20vh;
+}
+
+#section-main-button p {
+    text-align: center;
+}
+
+#section-main-button button {
+    margin: auto !important;
+    padding-top: 15px;
+    width: 250px;
+    height: 70px;
+    border: 2px solid #FFFFFF;
+    background-color: transparent;
+    cursor: pointer;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-main-button button:hover {
+    background-color: #FFFFFF;
+    border: 2px #F5F5F5;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-main-button button:hover p{
+    color: #303030;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-main-button p {
+    color: #FFFFFF;
+    font-weight: bold;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-main-question h3 {
+    margin: 50px auto 100px auto;
+}
+
+.section-main-answers-button {
+    width: 30px;
+    height: 30px;
+    margin: auto auto 20px auto;
+    padding: 0px;
+    border: 2px solid #FFFFFF;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+}
+
+.section-main-answers-button:hover div {
+    background-color: #F5F5F5;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.section-main-answers-button div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    top: 3px;
+    position: relative;
+    background-color: transparent;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-main-progress > div{
+    margin: 100px auto auto auto !important;
+}
+
+#section-main-progress > div > div {
+    -webkit-animation: progress-bar-stripes 1s linear infinite;
+    -o-animation: progress-bar-stripes 1s linear infinite;
+    animation: progress-bar-stripes 1s linear infinite;
+}
+
+#section-main-back a {
+    margin: 100px auto auto auto;
+    color: #F5F5F5 !important;
+}
+
+#section-main-headline h2 {
+    margin: 50px auto 100px auto;
+}
+
+#section-main-personality .col-1 {
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+#section-main-personality i {
+    margin: auto;
+}
+
+#section-main-info p{
+    margin: 50px auto auto auto;
+    text-align: center;
+}
+
+#section-main-info p a{
+    color: #FFFFFF;
+}
+
+#section-main-name-input {
+    text-align: center;
+    width: 400px;
+    height: 64px;
+    font-size: 22px;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
+    background-color: transparent;
+}
+
+#section-main-name-done {
+    margin-top: 2px;
+    text-align: center;
+    font-weight: bold;
+    margin: auto;
+    width: 64px;
+    height: 64px;
+    font-size: 22px;
+    color: #303030;
+    border: 2px solid #FFFFFF;
+    border-left-color: transparent;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#section-main-name-done:hover {
+    background-color: transparent;
+    color: #FFFFFF;
+    transition: 0.3s;
+}
+
+#section-main-name-done p {
+    text-align: center;
+    display: table;
+    margin: auto;
+}
+
+/*-------------------------------------------------------------*/
+/*Personality*/
+/*-------------------------------------------------------------*/
+
+.section-personality-content {
+    padding: 0px 25px 0px 25px;
+}
+
+#section-personality-3, #section-personality-5 {
+    background-color: #F5F5F5;
+    color: #303030;
+}
+
+#section-personality .content {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#section-personality a {
+    color: #303030;
+}
+
+#section-personality > div > p {
+    text-align: center;
+}
+
+/*-------------------------------------------------------------*/
+/*Statistics*/
+/*-------------------------------------------------------------*/
+
+#section-statistics p {
+    color: #F5F5F5;
+    text-align: center;
+}
+
+/*-------------------------------------------------------------*/
+/*Contact*/
+/*-------------------------------------------------------------*/
+
+#section-contact input, #section-contact textarea {
+    width: 90%;
+    margin-bottom: 15px !important;
+    font-family: Roboto;
+    font-size: 16px;
+    border: 2px solid #303030;
+    outline: none;
+    max-width: 500px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#section-contact input {
+    height: 38px;
+    padding: 0 16px;
+}
+
+#section-contact textarea {
+    height: 92px;
+    padding: 10px 16px 0 18px;
+}
+
+#section-contact-text-1:focus {
+    border: 3px solid #2ECC71;
+}
+
+#section-contact-text-2:focus {
+    border: 3px solid #EBC95E;
+}
+
+#section-contact-text-3:focus {
+    border: 3px solid #9B59B6;
+}
+
+#section-contact-text-4:focus {
+    border: 3px solid #3498DB;
+}
+
+#section-contact button {
+    margin: auto !important;
+    padding-top: 10px;
+    width: 200px;
+    height: 50px;
+    border: 2px solid #303030;
+    background-color: transparent;
+    cursor: pointer;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-contact button p {
+    text-align: center;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-contact button:hover {
+    background-color: #303030;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+#section-contact button:hover p{
+    color: #FFFFFF;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+/*-------------------------------------------------------------*/
+/*Footer*/
+/*-------------------------------------------------------------*/
+
+#section-footer-top {
+    margin: 25px;
+    text-align: center;
+}
+
+#section-footer-top a {
+    color: #303030 !important;
+}
+
+#section-footer-bottom {
+    margin: 15px;
+}
+
+#section-footer-bottom p {
+    text-align: center;
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*MD*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+
+@media (min-width: 768px) {
+    .content {
+        margin: 75px auto 75px auto;
+        width: 700px;
+    }
+
+    #section-main .content {
+        margin-top: 25px;
+    }
+
+    #section-personality-1, #section-personality-4, #section-personality-5 {
+        background-color: #F5F5F5;
+        color: #303030;
+    }
+
+    #section-personality-3 {
+        background-color: #FFFFFF;
+        color: #303030;
+    }
+
+    .section-personality-content {
+        padding: 50px;
+    }
+
+    #section-footer-top {
+        margin: 25px auto 25px auto;
+        width: 250px;
+        text-align: center;
+    }
+
+    .section-main-answers-button {
+        border-width: 3px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .section-main-answers-button div {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*LG*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+@media (min-width: 992px) {
+    .content {
+        margin: 75px auto 75px auto;
+        width: 800px;
+    }
+
+    #section-main .content {
+        margin-top: 25px;
+    }
+
+    .section-personality-content {
+        padding: 50px 80px 50px 80px;
+    }
+
+    .section-main-answers-button {
+        border-width: 4px;
+        width: 70px;
+        height: 70px;
+    }
+
+    .section-main-answers-button div {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+/*XL*/
+/*-------------------------------------------------------------*/
+/*-------------------------------------------------------------*/
+@media (min-width: 1200px) {
+    h1 {
+        font-size: 100px !important;
+    }
+
+    .content {
+        margin: 75px auto 75px auto;
+        width: 900px;
+    }
+
+    #section-main .content {
+        margin-top: 10vh;
+    }
+
+
+    #section-personality-3 {
+        background-color: #F5F5F5;
+        color: #303030;
+    }
+
+    #section-personality-2, #section-personality-4, #section-personality-6 {
+        background-color: #FFFFFF;
+        color: #303030;
+    }
+
+    .section-main-answers-button {
+        border-width: 4px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .section-main-answers-button div {
+        width: 65px;
+        height: 65px;
+    }
+}
