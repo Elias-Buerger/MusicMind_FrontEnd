@@ -1,10 +1,11 @@
 let answers = {};
+let questionCount = 0;
+let questionCompleted = true;
 let personality = undefined;
 let musicPath = undefined;
 let questionID = undefined;
-let questionCount = 0;
-let questionCompleted = true;
 let userID = undefined;
+let foreignID = undefined;
 
 /*-------------------------------------------------------------*/
 /*Download and init google analytics*/
@@ -23,6 +24,14 @@ ga('send', 'pageview');
 /*-------------------------------------------------------------*/
 $(function () {
 
+    ga(function(tracker) {
+        userID = tracker.get('clientId');
+        /*Handle own music in case it already exists*/
+        if(foreignID === undefined) {
+            tryShowID(userID);
+        }
+    });
+
     /*Show tooltips*/
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -32,12 +41,6 @@ $(function () {
         $('html, body').animate({
             scrollTop: elem.offset().top
         }, 1000);
-    });
-
-    ga(function(tracker) {
-        userID = tracker.get('clientId');
-        /*Handle own music in case it already exists*/
-        tryShowID(userID);
     });
 
     $('#section-main-button button').click(function () {
@@ -119,22 +122,26 @@ $(function () {
     });
 
     /*Handle other persons music in case of parameters*/
-    let id = getUrlParameter('id');
-    tryShowID(id);
+    foreignID = getUrlParameter('id');
+    tryShowID(foreignID);
 });
 
 function tryShowID(id) {
     if(id !== undefined) {
         $.get('https://www.musicmindproject.com:8443/backend/rest/music/' + id, function (data, status) {
-            if (status === 'success') {
-                personality = data['personality'];
-                musicPath = data['musicPath'];
-                transitionFromTo(
-                    ['#section-main-brain', '#section-main-title', '#section-main-button'],
-                    ['#section-main-headline', '#section-main-personality', '#section-main-info']
-                );
-                displayPersonality();
-                downloadMusic();
+            if (status !== 'success') {
+                printMessage('Error ' + status, 'Could not request Question Count from server!');
+            } else {
+                if(data !== null) {
+                    personality = data['personality'];
+                    musicPath = data['musicPath'];
+                    transitionFromTo(
+                        ['#section-main-brain', '#section-main-title', '#section-main-button'],
+                        ['#section-main-headline', '#section-main-personality', '#section-main-info']
+                    );
+                    displayPersonality();
+                    downloadMusic();
+                }
             }
         });
     }

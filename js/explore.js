@@ -21,8 +21,13 @@ ga('send', 'pageview');
 /*Init JS*/
 /*-------------------------------------------------------------*/
 let audio = new Audio();
+let userID = undefined;
 
 $(function () {
+
+    ga(function(tracker) {
+        userID = tracker.get('clientId');
+    });
 
     /*Show tooltips*/
     $('[data-toggle="tooltip"]').tooltip();
@@ -101,6 +106,17 @@ function createItem(data) {
         window.location.href = 'https://www.musicmindproject.com/?id=' + data['id'];
     });
     item.find('.element-play button').click(function() {
+        let play = {
+            player: userID,
+            played: data['id']
+        };
+        $.ajax({
+            url: 'https://www.musicmindproject.com:8443/music/play',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            type: 'POST',
+            data: JSON.stringify(play)
+        });
         audio.src = 'https://www.musicmindproject.com:8443/music/' + data['musicPath'];
         audio.play();
     });
