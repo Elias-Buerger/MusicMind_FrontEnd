@@ -133,7 +133,13 @@ function tryShowID(id) {
                 printMessage('Error ' + status, 'Could not request Question Count from server!');
             } else {
                 if(data !== null) {
-                    personality = data['personality'];
+                    personality = {
+                        'neuroticism': data['neuroticism'],
+                        'extraversion': data['extraversion'],
+                        'openness': data['openness'],
+                        'agreeableness': data['agreeableness'],
+                        'conscientiousness': data['conscientiousness']
+                    };
                     musicPath = data['musicPath'];
                     transitionFromTo(
                         ['#section-main-brain', '#section-main-title', '#section-main-button'],
@@ -292,7 +298,13 @@ function submitQuestions() {
         type: 'POST',
         data: JSON.stringify(answers),
         success: function (result) {
-            personality = result['personality'];
+            personality = {
+                'neuroticism': result['neuroticism'],
+                'extraversion': result['extraversion'],
+                'openness': result['openness'],
+                'agreeableness': result['agreeableness'],
+                'conscientiousness': result['conscientiousness']
+            };
             musicPath = result['musicPath'];
             transitionFromTo(
                 ['#section-main-question', '#section-main-answers', '#section-main-text', '#section-main-progress', '#section-main-back', '#section-main-name'],
