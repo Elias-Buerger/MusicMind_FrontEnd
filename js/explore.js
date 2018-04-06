@@ -20,6 +20,8 @@ ga('send', 'pageview');
 /*-------------------------------------------------------------*/
 /*Init JS*/
 /*-------------------------------------------------------------*/
+let audio = new Audio();
+
 $(function () {
 
     /*Show tooltips*/
@@ -33,11 +35,25 @@ $(function () {
         }, 1000);
     });
 
+    $('#section-header-search').change(function() {
+        getMusic('name=' + $(this).val(), 0, 50);
+    });
+
+    $('#section-header-a-1').click(function() {
+        getMusic('hottest', 0, 50);
+    });
+
+    $('#section-header-a-2').click(function() {
+        getMusic('newest', 0, 50);
+    });
+
     getMusic('newest', 0, 50);
 
+    //Test purpose
     for (let i = 0; i < 100; i++) {
         createItem({
             name: 'Hauer',
+            id: 'ads',
             neuroticism: Math.random() * 100,
             extraversion: Math.random() * 100,
             openness: Math.random() * 100,
@@ -81,6 +97,13 @@ function createItem(data) {
     item.find('.element-headline').text(data['name'] + '\'s Music');
     item.find('.element-shares').text(data['shares'] + ' shares');
     item.find('.element-plays').text(data['plays'] + ' plays');
+    item.find('.element-more').click(function() {
+        window.location.href = 'https://www.musicmindproject.com/?id=' + data['id'];
+    });
+    item.find('.element-play button').click(function() {
+        audio.src = 'https://www.musicmindproject.com:8443/music/' + data['musicPath'];
+        audio.play();
+    });
 
     items.append(item);
 }

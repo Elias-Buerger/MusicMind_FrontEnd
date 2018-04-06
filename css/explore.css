@@ -162,6 +162,13 @@ i {
     transition: all 0.2s;
 }
 
+#section-header-search {
+    float: right;
+    border: 2px solid #2a2a2a !important;
+    padding: 3px 10px 3px 10px;
+    margin: 14px 50px 0px 0px;
+}
+
 #section-header a:hover {
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;

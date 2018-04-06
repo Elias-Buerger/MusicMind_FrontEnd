@@ -36,6 +36,8 @@ $(function () {
 
     ga(function(tracker) {
         userID = tracker.get('clientId');
+        /*Handle own music in case it already exists*/
+        tryShowID(userID);
     });
 
     $('#section-main-button button').click(function () {
@@ -49,7 +51,8 @@ $(function () {
     $('#section-main-answers button').click(function () {
         completeQuestion($(this).children().attr('id')[20]);
     });
-    $('#section-main-name-done').click(function () {
+
+    $('#section-main-name button').click(function () {
         completeQuestion($('#section-main-name-input').val());
     });
     
@@ -117,12 +120,13 @@ $(function () {
 
     /*Handle other persons music in case of parameters*/
     let id = getUrlParameter('id');
+    tryShowID(id);
+});
+
+function tryShowID(id) {
     if(id !== undefined) {
         $.get('https://www.musicmindproject.com:8443/backend/rest/music/' + id, function (data, status) {
-            if (status !== 'success') {
-                printMessage(false, 'Error ' + status, 'Could not request Page clicks from server!');
-            }
-            else {
+            if (status === 'success') {
                 personality = data['personality'];
                 musicPath = data['musicPath'];
                 transitionFromTo(
@@ -134,7 +138,7 @@ $(function () {
             }
         });
     }
-});
+}
 
 /*-------------------------------------------------------------*/
 /*Hide unused animated header objects*/
@@ -313,7 +317,7 @@ function displayPersonality() {
 /*-------------------------------------------------------------*/
 function downloadMusic() {
     $.ajax({
-        url: 'https://www.musicmindproject.com:8443/' + musicPath,
+        url: 'https://www.musicmindproject.com:8443/music/' + musicPath,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
