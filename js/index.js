@@ -132,7 +132,8 @@ function tryShowID(id) {
             if (status !== 'success') {
                 printMessage('Error ' + status, 'Could not request Question Count from server!');
             } else {
-                if(data !== null) {
+                if(data !== 'null') {
+                    alert(data);
                     personality = {
                         'neuroticism': data['neuroticism'],
                         'extraversion': data['extraversion'],
