@@ -117,7 +117,7 @@ function createItem(data) {
             type: 'POST',
             data: JSON.stringify(play)
         });
-        audio.src = 'https://www.musicmindproject.com:8443/music/' + data['pathToMusicTrack'];
+        audio.src = 'https://www.musicmindproject.com:443/music/' + data['pathToMusicTrack'];
         audio.play();
     });
 
