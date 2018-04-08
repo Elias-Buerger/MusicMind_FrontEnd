@@ -340,7 +340,7 @@ function displayPersonality() {
 /*-------------------------------------------------------------*/
 function downloadMusic() {
     $.ajax({
-        url: 'https://www.musicmindproject.com:443/music' + musicPath,
+        url: 'https://www.musicmindproject.com:443/music/' + musicPath,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
