@@ -22,6 +22,8 @@ ga('send', 'pageview');
 /*-------------------------------------------------------------*/
 let audio = new Audio();
 let userID = undefined;
+let page = 0;
+let query = 'newest';
 
 $(function () {
 
@@ -40,39 +42,37 @@ $(function () {
         }, 1000);
     });
 
+    $('#section-more a').click(function() {
+        page++;
+        updateMusic();
+    });
+
     $('#section-header-search').change(function() {
-        getMusic('name=' + $(this).val(), 0, 50);
+        page = 0;
+        query = $(this).val();
+        updateMusic();
     });
 
     $('#section-header-a-1').click(function() {
-        getMusic('hottest', 0, 50);
+        page = 0;
+        query = 'hottest';
+        updateMusic();
     });
 
     $('#section-header-a-2').click(function() {
-        getMusic('newest', 0, 50);
+        page = 0;
+        query = 'newest';
+        updateMusic();
     });
 
-    getMusic('newest', 0, 50);
-
-    //Test purpose
-    for (let i = 0; i < 100; i++) {
-        createItem({
-            name: 'Hauer',
-            id: 'ads',
-            neuroticism: Math.random() * 100,
-            extraversion: Math.random() * 100,
-            openness: Math.random() * 100,
-            agreeableness: Math.random() * 100,
-            conscientiousness: Math.random() * 100,
-            shares: Math.round(Math.random() * 100),
-            plays: Math.round(Math.random() * 100),
-        });
-    }
+    updateMusic();
 });
 
-function getMusic(query, min, max) {
-    clearItems();
-    $.get('https://www.musicmindproject.com:8443/backend/rest/music/' + query + '/' + min + '/' + max, function (data, status) {
+function updateMusic() {
+    if(page == 0) {
+        clearItems();
+    }
+    $.get('https://www.musicmindproject.com:8443/backend/rest/music/' + query + '/' + (page * 40) + '/' + ((page + 1) * 40), function (data, status) {
         if (status !== 'success') {
             printMessage(false, 'Error ' + status, 'Could not request Page clicks from server!');
         }
@@ -99,11 +99,11 @@ function createItem(data) {
     for (let i = 0; i < traits.length; i++) {
         item.find('.personality-' + traits[i]).width(data[traits[i]] + '%');
     }
-    item.find('.element-headline').text(data['name'] + '\'s Music');
+    item.find('.element-headline').text(data['userName'] + '\'s Music');
     item.find('.element-shares').text(data['shares'] + ' shares');
     item.find('.element-plays').text(data['plays'] + ' plays');
     item.find('.element-more').click(function() {
-        window.location.href = 'https://www.musicmindproject.com/?id=' + data['id'];
+        window.location.href = 'https://www.musicmindproject.com/?id=' + data['userId'];
     });
     item.find('.element-play button').click(function() {
         let play = {
@@ -117,7 +117,7 @@ function createItem(data) {
             type: 'POST',
             data: JSON.stringify(play)
         });
-        audio.src = 'https://www.musicmindproject.com:8443/music/' + data['musicPath'];
+        audio.src = 'https://www.musicmindproject.com:8443/music/' + data['pathToMusicTrack'];
         audio.play();
     });
 

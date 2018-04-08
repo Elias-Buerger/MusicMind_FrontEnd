@@ -23,15 +23,6 @@ ga('send', 'pageview');
 /*Init JS*/
 /*-------------------------------------------------------------*/
 $(function () {
-
-    ga(function(tracker) {
-        userID = tracker.get('clientId');
-        /*Handle own music in case it already exists*/
-        if(foreignID === undefined) {
-            tryShowID(userID);
-        }
-    });
-
     /*Show tooltips*/
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -124,6 +115,14 @@ $(function () {
     /*Handle other persons music in case of parameters*/
     foreignID = getUrlParameter('id');
     tryShowID(foreignID);
+
+    ga(function(tracker) {
+        userID = tracker.get('clientId');
+        /*Handle own music in case it already exists*/
+        if(foreignID === undefined) {
+            tryShowID(userID);
+        }
+    });
 });
 
 function tryShowID(id) {
@@ -133,7 +132,6 @@ function tryShowID(id) {
                 printMessage('Error ' + status, 'Could not request Question Count from server!');
             } else {
                 if(data !== 'null') {
-                    alert(data);
                     personality = {
                         'neuroticism': data['neuroticism'],
                         'extraversion': data['extraversion'],
@@ -141,15 +139,19 @@ function tryShowID(id) {
                         'agreeableness': data['agreeableness'],
                         'conscientiousness': data['conscientiousness']
                     };
-                    musicPath = data['musicPath'];
+                    musicPath = data['pathToMusicTrack'];
                     transitionFromTo(
                         ['#section-main-brain', '#section-main-title', '#section-main-button'],
                         ['#section-main-headline', '#section-main-personality', '#section-main-info']
                     );
+                    if(foreignID !== undefined) {
+                        $('#section-main-headline h2').text(data['userName'] + '\'s Personality:');
+                    }
                     displayPersonality();
                     downloadMusic();
                 }
             }
+
         });
     }
 }
@@ -306,14 +308,15 @@ function submitQuestions() {
                 'agreeableness': result['agreeableness'],
                 'conscientiousness': result['conscientiousness']
             };
-            musicPath = result['musicPath'];
+            musicPath = result['pathToMusicTrack'];
             transitionFromTo(
                 ['#section-main-question', '#section-main-answers', '#section-main-text', '#section-main-progress', '#section-main-back', '#section-main-name'],
                 ['#section-main-headline', '#section-main-personality', '#section-main-info']
             );
+
             displayPersonality();
             downloadMusic();
-            ga('send', 'event', 'personality', 'generate', JSON.stringify(personality));
+            ga('send', 'event', 'personality', 'generate');
         }
     });
 }
@@ -337,7 +340,7 @@ function displayPersonality() {
 /*-------------------------------------------------------------*/
 function downloadMusic() {
     $.ajax({
-        url: 'https://www.musicmindproject.com:8443/music/' + musicPath,
+        url: 'https://www.musicmindproject.com:443/music' + musicPath,
         dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
