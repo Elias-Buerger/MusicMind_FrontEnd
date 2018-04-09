@@ -108,11 +108,10 @@ function createItem(data) {
     item.find('.element-play button').click(function() {
         let play = {
             player: userID,
-            played: data['id']
+            played: data['userId']
         };
         $.ajax({
-            url: 'https://www.musicmindproject.com:8443/music/play',
-            dataType: 'json',
+            url: 'https://www.musicmindproject.com:8443/backend/rest/music/play',
             contentType: 'application/json; charset=utf-8',
             type: 'POST',
             data: JSON.stringify(play)

@@ -296,7 +296,6 @@ function submitQuestions() {
     answers[questionID] = userID;
     $.ajax({
         url: 'https://www.musicmindproject.com:8443/backend/rest/music/',
-        dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
         data: JSON.stringify(answers),
@@ -341,7 +340,6 @@ function displayPersonality() {
 function downloadMusic() {
     $.ajax({
         url: 'https://www.musicmindproject.com:443/music/' + musicPath,
-        dataType: 'json',
         contentType: 'application/json; charset=utf-8',
         type: 'POST',
         data: JSON.stringify(personality),
