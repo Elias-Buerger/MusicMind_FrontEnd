@@ -9,7 +9,7 @@ let foreignID = undefined;
 
 /*-------------------------------------------------------------*/
 /*Download and init google analytics*/
-/*-------------------------------------------------------------*/
+/*----------------------+---------------------------------------*/
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -341,8 +341,7 @@ function downloadMusic() {
     $.ajax({
         url: 'https://www.musicmindproject.com:443/music/' + musicPath,
         contentType: 'application/json; charset=utf-8',
-        type: 'POST',
-        data: JSON.stringify(personality),
+        type: 'GET',
         success: function (result) {
             document.getElementById('download').src = result['link'];
         }
