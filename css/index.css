@@ -215,17 +215,22 @@ hr {
     padding: 25px;
 }
 
-#section-main-button {
+#section-main-button, #section-main-actions {
     width: 100%;
     height: 20vh;
 }
 
-#section-main-button p {
+#section-main-button p, #section-main-actions p {
     text-align: center;
 }
 
-#section-main-button button {
-    margin: auto !important;
+#section-main-actions button {
+    margin-top: 50px !important;
+}
+
+#section-main-button button, #section-main-actions button {
+    margin-left: auto !important;
+    margin-right: auto !important;
     padding-top: 15px;
     width: 250px;
     height: 70px;
@@ -239,7 +244,7 @@ hr {
     transition: all 0.2s;
 }
 
-#section-main-button button:hover {
+#section-main-button button:hover, #section-main-actions button:hover {
     background-color: #FFFFFF;
     border: 2px #F5F5F5;
 
@@ -249,7 +254,7 @@ hr {
     transition: all 0.2s;
 }
 
-#section-main-button button:hover p{
+#section-main-button button:hover p, #section-main-actions button:hover p{
     color: #303030;
 
     -webkit-transition: all 0.2s;
@@ -258,7 +263,7 @@ hr {
     transition: all 0.2s;
 }
 
-#section-main-button p {
+#section-main-button p, #section-main-actions p {
     color: #FFFFFF;
     font-weight: bold;
 
@@ -322,7 +327,7 @@ hr {
 }
 
 #section-main-headline h2 {
-    margin: 50px auto 100px auto;
+    margin: 50px auto 50px auto;
 }
 
 #section-main-personality .col-1 {
@@ -335,12 +340,12 @@ hr {
 }
 
 #section-main-info p{
-    margin: 50px auto auto auto;
+    margin: 30px auto auto auto;
     text-align: center;
 }
 
-#section-main-info p a{
-    color: #FFFFFF;
+#section-main-info p a {
+    color: #FFFFFF !important;
 }
 
 #section-main-name-input {

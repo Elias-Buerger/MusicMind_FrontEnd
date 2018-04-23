@@ -38,6 +38,10 @@ $(function () {
         startQuestions();
     });
 
+    $('#section-main-actions-download').click(function () {
+        downloadMusic();
+    });
+
     $('#section-main-back a').click(function () {
         undoQuestion();
     });
@@ -131,7 +135,7 @@ function tryShowID(id) {
             if (status !== 'success') {
                 printMessage('Error ' + status, 'Could not request Question Count from server!');
             } else {
-                if(data !== 'null') {
+                if(data !== null && data !== 'null') {
                     personality = {
                         'neuroticism': data['neuroticism'],
                         'extraversion': data['extraversion'],
@@ -142,13 +146,12 @@ function tryShowID(id) {
                     musicPath = data['pathToMusicTrack'];
                     transitionFromTo(
                         ['#section-main-brain', '#section-main-title', '#section-main-button'],
-                        ['#section-main-headline', '#section-main-personality', '#section-main-info']
+                        ['#section-main-headline', '#section-main-personality', '#section-main-info', '#section-main-actions']
                     );
                     if(foreignID !== undefined) {
                         $('#section-main-headline h2').text(data['userName'] + '\'s Personality:');
                     }
                     displayPersonality();
-                    downloadMusic();
                 }
             }
 
@@ -310,11 +313,10 @@ function submitQuestions() {
             musicPath = result['pathToMusicTrack'];
             transitionFromTo(
                 ['#section-main-question', '#section-main-answers', '#section-main-text', '#section-main-progress', '#section-main-back', '#section-main-name'],
-                ['#section-main-headline', '#section-main-personality', '#section-main-info']
+                ['#section-main-headline', '#section-main-personality', '#section-main-info', '#section-main-actions']
             );
 
             displayPersonality();
-            downloadMusic();
             ga('send', 'event', 'personality', 'generate');
         }
     });
@@ -338,14 +340,7 @@ function displayPersonality() {
 /*Download music via iframe from server*/
 /*-------------------------------------------------------------*/
 function downloadMusic() {
-    $.ajax({
-        url: 'https://www.musicmindproject.com:443/music/' + musicPath,
-        contentType: 'application/json; charset=utf-8',
-        type: 'GET',
-        success: function (result) {
-            document.getElementById('download').src = result['link'];
-        }
-    });
+    window.open('https://www.musicmindproject.com:443/music/' + musicPath);
 }
 
 /*-------------------------------------------------------------*/
