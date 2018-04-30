@@ -126,7 +126,7 @@ function createItem(data) {
             $(this).find('p').text('Play');
             $(this).attr('playing', 'false');
         } else {
-            playMusic(data['pathToMusicTrack']);
+            playMusic(data['filename']);
             $(this).find('p').text('Pause');
             $(this).attr('playing', 'true');
         }
