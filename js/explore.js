@@ -20,7 +20,6 @@ ga('send', 'pageview');
 /*-------------------------------------------------------------*/
 /*Init JS*/
 /*-------------------------------------------------------------*/
-let audio = new Audio();
 let userID = undefined;
 let page = 0;
 let query = 'newest';
@@ -105,19 +104,32 @@ function createItem(data) {
     item.find('.element-more').click(function() {
         window.location.href = 'https://www.musicmindproject.com/?id=' + data['userId'];
     });
+    item.find('.element-play button').attr('playing', 'false');
+    item.find('.element-play button').attr('clicked', 'false');
     item.find('.element-play button').click(function() {
-        let play = {
-            player: userID,
-            played: data['userId']
-        };
-        $.ajax({
-            url: 'https://www.musicmindproject.com:8443/backend/rest/music/play',
-            contentType: 'application/json; charset=utf-8',
-            type: 'POST',
-            data: JSON.stringify(play)
-        });
-        audio.src = 'https://www.musicmindproject.com:443/music/' + data['pathToMusicTrack'];
-        audio.play();
+        if($(this).attr('clicked') === 'false') {
+            $(this).attr('clicked', 'true');
+            let play = {
+                player: userID,
+                played: data['userId']
+            };
+            $.ajax({
+                url: 'https://www.musicmindproject.com:8443/backend/rest/music/play',
+                contentType: 'application/json; charset=utf-8',
+                type: 'POST',
+                data: JSON.stringify(play)
+            });
+        }
+
+        if($(this).attr('playing') === 'true') {
+            pauseMusic();
+            $(this).find('p').text('Play');
+            $(this).attr('playing', 'false');
+        } else {
+            playMusic(data['pathToMusicTrack']);
+            $(this).find('p').text('Pause');
+            $(this).attr('playing', 'true');
+        }
     });
 
     items.append(item);
@@ -127,11 +139,29 @@ function createItem(data) {
 /*Print error and success messages to user*/
 /*-------------------------------------------------------------*/
 function printMessage(positive, title, message) {
-    if(!positive) ga('send', 'error', title + ":\n" + message);
+    if(!positive) ga('send', 'error', title + ':\n' + message);
 
     $('#section-modal-title').text(title);
     $('#section-modal-text').text(message);
     $('#section-modal-button').addClass(positive ? 'btn-success' : 'btn-danger');
     $('#section-modal-button').removeClass(positive ? 'btn-danger' : 'btn-success');
     $('#section-modal').modal();
+}
+
+/*-------------------------------------------------------------*/
+/*Play or pause current music*/
+/*-------------------------------------------------------------*/
+function playMusic(path) {
+    let audio = document.getElementById('audio');
+    audio.src = 'https://www.musicmindproject.com:443/music/' + path + '.mp3';
+    audio.play();
+
+    $('.element-play button').attr('playing', 'false');
+    $('.element-play button p').text('Play');
+}
+
+function pauseMusic() {
+    let audio = document.getElementById('audio');
+    audio.pause();
+    audio.currentTime = 0;
 }

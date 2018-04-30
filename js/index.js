@@ -1,15 +1,16 @@
 let answers = {};
 let questionCount = 0;
+let musicPlaying = false;
 let questionCompleted = true;
 let personality = undefined;
-let musicPath = undefined;
+let filePath = undefined;
 let questionID = undefined;
 let userID = undefined;
 let foreignID = undefined;
 
 /*-------------------------------------------------------------*/
 /*Download and init google analytics*/
-/*----------------------+---------------------------------------*/
+/*--------------------------------------------------------------*/
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -36,6 +37,16 @@ $(function () {
 
     $('#section-main-button button').click(function () {
         startQuestions();
+    });
+
+    $('#section-main-actions-play').click(function() {
+        if(musicPlaying) {
+            pauseMusic();
+            $(this).find('p').text('Play');
+        } else {
+            playMusic();
+            $(this).find('p').text('Pause');
+        }
     });
 
     $('#section-main-actions-download').click(function () {
@@ -143,7 +154,7 @@ function tryShowID(id) {
                         'agreeableness': data['agreeableness'],
                         'conscientiousness': data['conscientiousness']
                     };
-                    musicPath = data['pathToMusicTrack'];
+                    filePath = data['filename'];
                     transitionFromTo(
                         ['#section-main-brain', '#section-main-title', '#section-main-button'],
                         ['#section-main-headline', '#section-main-personality', '#section-main-info', '#section-main-actions']
@@ -310,7 +321,7 @@ function submitQuestions() {
                 'agreeableness': result['agreeableness'],
                 'conscientiousness': result['conscientiousness']
             };
-            musicPath = result['pathToMusicTrack'];
+            filePath = result['filename'];
             transitionFromTo(
                 ['#section-main-question', '#section-main-answers', '#section-main-text', '#section-main-progress', '#section-main-back', '#section-main-name'],
                 ['#section-main-headline', '#section-main-personality', '#section-main-info', '#section-main-actions']
@@ -336,11 +347,29 @@ function displayPersonality() {
     }
 }
 
+
+/*-------------------------------------------------------------*/
+/*Play or pause current music*/
+/*-------------------------------------------------------------*/
+function playMusic() {
+    let audio = document.getElementById('audio');
+    audio.src = 'https://www.musicmindproject.com:443/music/' + filePath + '.mp3';
+    audio.play();
+    musicPlaying = true;
+}
+
+function pauseMusic() {
+    let audio = document.getElementById('audio');
+    audio.pause();
+    audio.currentTime = 0;
+    musicPlaying = false;
+}
+
 /*-------------------------------------------------------------*/
 /*Download music via iframe from server*/
 /*-------------------------------------------------------------*/
 function downloadMusic() {
-    window.open('https://www.musicmindproject.com:443/music/' + musicPath);
+    window.open('https://www.musicmindproject.com:443/music/' + filePath + '.mp3');
 }
 
 /*-------------------------------------------------------------*/

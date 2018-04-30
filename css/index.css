@@ -189,7 +189,7 @@ hr {
 /*-------------------------------------------------------------*/
 
 #section-main {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #section-main-animation-object-container {
@@ -217,7 +217,7 @@ hr {
 
 #section-main-button, #section-main-actions {
     width: 100%;
-    height: 20vh;
+    min-height: 20vh;
 }
 
 #section-main-button p, #section-main-actions p {
@@ -271,6 +271,18 @@ hr {
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
     transition: all 0.2s;
+}
+
+#section-main-actions-play {
+    border-color: #2ECC71 !important;
+}
+
+#section-main-actions-play:hover {
+    background-color: #2ECC71 !important;
+}
+
+#section-main-actions-play:hover p {
+    color: #FFFFFF !important;
 }
 
 #section-main-question h3 {
