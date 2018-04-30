@@ -421,7 +421,6 @@ function getUrlParameter(sParam) {
 /*-------------------------------------------------------------*/
 
 function readyTweetButton(id) {
-    console.log("Ready Tweet Button");
     twttr.ready(
         function (twttr) {
             twttr.widgets.createShareButton(
