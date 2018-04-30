@@ -376,7 +376,7 @@ function downloadMusic() {
 /*Get URL Paramters if existing*/
 /*-------------------------------------------------------------*/
 function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    let sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
         sParameterName,
         i;
@@ -388,4 +388,14 @@ function getUrlParameter(sParam) {
             return sParameterName[1] === undefined ? true : sParameterName[1];
         }
     }
+};
+
+/*-------------------------------------------------------------*/
+/*Change meta tags for social media sharing*/
+/*-------------------------------------------------------------*/
+
+function setTwitterMetatags(filePath, username) {
+    $("meta[name='twitter:title']").attr("content", "Listen ${username}'s personal music");
+    $("meta[name='twitter:description']").attr("content", "This music was generated using data about ${username}'s personality. Try it out for yourself!");
+    $("meta[name='twitter:image']").attr("content", "https://www.musicmindproject.com:443/image/${filePath}.png");
 };
