@@ -366,10 +366,16 @@ function pauseMusic() {
 }
 
 /*-------------------------------------------------------------*/
-/*Download music via iframe from server*/
+/*Download music via generated link from server*/
 /*-------------------------------------------------------------*/
 function downloadMusic() {
-    window.open('https://www.musicmindproject.com:443/music/' + filePath + '.mp3');
+    let element = document.createElement('a');
+    element.setAttribute('href', 'data:mp3,' + 'https://www.musicmindproject.com:443/music/' + filePath + '.mp3');
+    element.setAttribute('download', filePath.substring(filePath.indexOf('_')+1) + '.mp3');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
 }
 
 /*-------------------------------------------------------------*/
