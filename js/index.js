@@ -162,6 +162,7 @@ function tryShowID(id) {
                     if(foreignID !== undefined) {
                         $('#section-main-headline h2').text(data['userName'] + '\'s Personality:');
                     }
+                    setTwitterMetatags(filePath);
                     displayPersonality();
                 }
             }
@@ -326,7 +327,7 @@ function submitQuestions() {
                 ['#section-main-question', '#section-main-answers', '#section-main-text', '#section-main-progress', '#section-main-back', '#section-main-name'],
                 ['#section-main-headline', '#section-main-personality', '#section-main-info', '#section-main-actions']
             );
-
+            setTwitterMetatags(filePath);
             displayPersonality();
             ga('send', 'event', 'personality', 'generate');
         }
@@ -394,7 +395,8 @@ function getUrlParameter(sParam) {
 /*Change meta tags for social media sharing*/
 /*-------------------------------------------------------------*/
 
-function setTwitterMetatags(filePath, username) {
+function setTwitterMetatags(filePath) {
+    let username = str.substr(str.indexOf('_')+1);
     $("meta[name='twitter:title']").attr("content", "Listen ${username}'s personal music");
     $("meta[name='twitter:description']").attr("content", "This music was generated using data about ${username}'s personality. Try it out for yourself!");
     $("meta[name='twitter:image']").attr("content", "https://www.musicmindproject.com:443/image/${filePath}.png");
