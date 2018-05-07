@@ -419,9 +419,7 @@ function downloadMusic() {
 /*Click on 'Share on Twitter'*/
 /*-------------------------------------------------------------*/
 function clickTwitterShare() {
-    $.get('https://www.musicmindproject.com:8443/backend/rest/music/video/' + filePath);
-
-    downloadVideo();
+    $.get('https://www.musicmindproject.com:8443/backend/rest/music/video/' + filePath, success = () => downloadVideo());
 }
 
 /*-------------------------------------------------------------*/
