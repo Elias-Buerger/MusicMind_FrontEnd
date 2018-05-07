@@ -228,6 +228,10 @@ hr {
     margin-top: 50px !important;
 }
 
+.button-share {
+    width: 75px !important;
+}
+
 #section-main-button button, #section-main-actions button {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -635,7 +639,6 @@ hr {
     #section-main .content {
         margin-top: 10vh;
     }
-
 
     #section-personality-3 {
         background-color: #F5F5F5;
