@@ -494,8 +494,8 @@ function shareFacebookStory(id)
         method: 'share_open_graph',
         action_type: 'og.likes',
         action_properties: JSON.stringify({
-            object:'https://www.musicmindproject.com/?id=' + id,
-            image:'https://www.musicmindproject.com/image/' + filePath + '.png'
+            object:'https://musicmindproject.com/?id=' + id,
+            image:'https://musicmindproject.com/image/' + filePath + '.png'
         })
     }, function(response){});
 }
