@@ -8,6 +8,9 @@ let questionID = undefined;
 let userID = undefined;
 let foreignID = undefined;
 
+/*-------------------------------------------------------------*/
+/*Download and init TwitterJS*/
+/*--------------------------------------------------------------*/
 
 window.twttr = (function (d, s, id) {
     let js, fjs = d.getElementsByTagName(s)[0],
@@ -25,6 +28,10 @@ window.twttr = (function (d, s, id) {
 
     return t;
 }(document, "script", "twitter-wjs"));
+
+/*-------------------------------------------------------------*/
+/*Download and init facebook api*/
+/*--------------------------------------------------------------*/
 
 window.fbAsyncInit = function() {
     FB.init({
@@ -59,6 +66,7 @@ ga('send', 'pageview');
 /*-------------------------------------------------------------*/
 /*Init JS*/
 /*-------------------------------------------------------------*/
+
 $(function () {
     /*Show tooltips*/
     $('[data-toggle="tooltip"]').tooltip();
