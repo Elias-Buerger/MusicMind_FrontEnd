@@ -416,6 +416,28 @@ function downloadMusic() {
 }
 
 /*-------------------------------------------------------------*/
+/*Click on 'Share on Twitter'*/
+/*-------------------------------------------------------------*/
+function clickTwitterShare() {
+    $.get('https://www.musicmindproject.com:8443/backend/rest/music/video/' + filePath);
+
+    downloadVideo();
+}
+
+/*-------------------------------------------------------------*/
+/*Download video via generated link from server*/
+/*-------------------------------------------------------------*/
+function downloadVideo() {
+    let element = document.createElement('a');
+    element.setAttribute('href', 'https://www.musicmindproject.com:443/video/' + filePath + '.mp4');
+    element.setAttribute('download', filePath.substring(filePath.indexOf('_')+1) + '.mp4');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+/*-------------------------------------------------------------*/
 /*Get URL Paramters if existing*/
 /*-------------------------------------------------------------*/
 function getUrlParameter(sParam) {
