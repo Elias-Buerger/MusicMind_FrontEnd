@@ -101,6 +101,14 @@ $(function () {
         $.get('https://www.musicmindproject.com:8443/backend/rest/music/video/' + filePath, success = () => downloadVideo());
     });
 
+    $('#section-main-actions-share-facebook').on("click", function () {
+        shareFacebookStory(userID);
+    });
+
+    $('#section-main-actions-share-twitter').on("click", function () {
+        readyTweetButton(userID);
+    });
+
     $('#section-main-back a').click(function () {
         undoQuestion();
     });
