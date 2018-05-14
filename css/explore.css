@@ -146,7 +146,7 @@ i {
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 65px;
+    height: 100px;
     box-shadow: 0 2px 15px #2a2a2a;
 }
 
@@ -162,11 +162,12 @@ i {
     transition: all 0.2s;
 }
 
+
 #section-header-search {
-    float: right;
     border: 2px solid #2a2a2a !important;
     padding: 3px 10px 3px 10px;
-    margin: 14px 50px 0px 0px;
+    margin: auto !important;
+    width: 100%;
 }
 
 #section-header a:hover {
@@ -193,7 +194,7 @@ i {
 /*-------------------------------------------------------------*/
 
 #section-elements {
-    margin-top: 65px;
+    margin-top: 100px;
 }
 
 #section-elements-hidden {
@@ -323,6 +324,20 @@ i {
     .content {
         margin: 75px auto 75px auto;
         width: 700px;
+    }
+
+    #section-header {
+        height: 65px;
+    }
+
+    #section-elements {
+        margin-top: 65px;
+    }    
+
+    #section-header-search {
+        float: right;
+        margin: 14px 50px 0px 0px !important;
+        width: auto;
     }
 
     #section-personality-1, #section-personality-4, #section-personality-5 {

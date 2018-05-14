@@ -259,8 +259,6 @@ hr {
     }
 }
 
-@media (min-width: 768px) {
-    .container {
-        padding-top: 80px;
-    }
+.container {
+    padding-top: 80px;
 }

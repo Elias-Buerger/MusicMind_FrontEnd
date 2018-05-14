@@ -49,6 +49,7 @@ $(function () {
     $('#section-header-search').change(function() {
         page = 0;
         query = $(this).val();
+        if(!query) query = 'hottest';
         updateMusic();
     });
 
