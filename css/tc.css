@@ -19,7 +19,7 @@ h1, h2, h3, a {
 }
 
 p {
-    text-align: justify;
+    text-align: center;
 }
 
 h1 {
@@ -89,10 +89,19 @@ i {
     margin: 50px 25px 50px 25px;
 }
 
+hr {
+    width: 50px;
+    height: 5px !important;
+}
+
 .light {
     background-color: #FFFFFF;
     color: #303030;
     overflow: hidden;
+}
+
+.light hr{
+    background-color: #303030;
 }
 
 .medium {
@@ -110,28 +119,23 @@ i {
     overflow: hidden;
 }
 
+.dark hr{
+    background-color: #FFFFFF;
+}
+
 .progressbar-back {
     background-color: transparent;
-    border: black solid 2px;
+    border: white solid;
     text-align: center;
-    height: 20px;
+    height: 30px;
     padding: 0px !important;
-    margin-bottom: 5px;
 }
 
 .progressbar-front {
     background-color: #303030;
     border: transparent;
-    width: 100%;
+    width: 0px;
     height: 100%;
-}
-
-.dark .progressbar-back {
-    border: #F5F5F5 solid 2px;
-}
-
-.medium .progressbar-back {
-    border: #303030 solid 2px;
 }
 
 
@@ -147,7 +151,7 @@ i {
     left: 0px;
     width: 100%;
     height: 65px;
-    box-shadow: 0 2px 15px #2a2a2a;
+    box-shadow: 0 2px 15px #303030;
 }
 
 #section-header a {
@@ -160,13 +164,6 @@ i {
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s;
     transition: all 0.2s;
-}
-
-#section-header-search {
-    float: right;
-    border: 2px solid #2a2a2a !important;
-    padding: 3px 10px 3px 10px;
-    margin: 14px 50px 0px 0px;
 }
 
 #section-header a:hover {
@@ -188,104 +185,6 @@ i {
     color: #9B59B6 !important;
 }
 
-/*-------------------------------------------------------------*/
-/*Elements*/
-/*-------------------------------------------------------------*/
-
-#section-elements {
-    margin-top: 65px;
-}
-
-#section-elements-hidden {
-    display: none;
-}
-
-/*-------------------------------------------------------------*/
-/*Element*/
-/*-------------------------------------------------------------*/
-
-.element {
-    padding: 35px !important;
-}
-
-.element-headline {
-    margin-bottom: 15px;
-}
-
-.element-play {
-    width: 100%;
-    height: 30px;
-    margin-bottom: 15px !important;
-    margin-top: 15px !important;
-}
-
-.element-play button {
-    margin: auto !important;
-    padding-top: 1px;
-    width: 150px;
-    height: 30px;
-    border: 2px solid #2ECC71;
-    background-color: transparent;
-    cursor: pointer;
-
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-}
-
-.element-play button:hover {
-    background-color: #2ECC71;
-
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-}
-
-.element-play button:hover p{
-    color: #FFFFFF;
-
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-}
-
-.dark .element-play p {
-    color: #FFFFFF;
-}
-
-.element-play p {
-    color: #303030;
-    text-align: center;
-
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    -o-transition: all 0.2s;
-    transition: all 0.2s;
-}
-
-.element-more {
-    font-size: 12px !important;
-    opacity: 0.6;
-}
-
-.element-plays, .element-shares {
-    font-size: 14px !important;
-}
-
-/*-------------------------------------------------------------*/
-/*More*/
-/*-------------------------------------------------------------*/
-
-#section-more {
-    padding: 20px;
-}
-
-#section-more a {
-    font-weight: normal !important;
-}
 
 /*-------------------------------------------------------------*/
 /*Footer*/
@@ -325,6 +224,10 @@ i {
         width: 700px;
     }
 
+    #section-main .content {
+        margin-top: 25px;
+    }
+
     #section-personality-1, #section-personality-4, #section-personality-5 {
         background-color: #F5F5F5;
         color: #303030;
@@ -356,44 +259,8 @@ i {
     }
 }
 
-/*-------------------------------------------------------------*/
-/*-------------------------------------------------------------*/
-/*LG*/
-/*-------------------------------------------------------------*/
-/*-------------------------------------------------------------*/
-@media (min-width: 992px) {
-    .content {
-        margin: 75px auto 75px auto;
-        width: 800px;
-    }
-
-    .section-personality-content {
-        padding: 50px 80px 50px 80px;
-    }
-}
-
-/*-------------------------------------------------------------*/
-/*-------------------------------------------------------------*/
-/*XL*/
-/*-------------------------------------------------------------*/
-/*-------------------------------------------------------------*/
-@media (min-width: 1200px) {
-    h1 {
-        font-size: 100px !important;
-    }
-
-    .content {
-        margin: 75px auto 75px auto;
-        width: 900px;
-    }
-
-    #section-personality-3 {
-        background-color: #F5F5F5;
-        color: #303030;
-    }
-
-    #section-personality-2, #section-personality-4, #section-personality-6 {
-        background-color: #FFFFFF;
-        color: #303030;
+@media (min-width: 768px) {
+    .container {
+        padding-top: 80px;
     }
 }

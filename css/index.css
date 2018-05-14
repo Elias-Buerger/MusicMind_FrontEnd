@@ -530,8 +530,13 @@ hr {
     text-align: center;
 }
 
+#section-footer-top .row {
+    margin-bottom: 15px !important;
+}
+
 #section-footer-top a {
     color: #303030 !important;
+    margin: 10px;
 }
 
 #section-footer-bottom {
@@ -574,7 +579,6 @@ hr {
 
     #section-footer-top {
         margin: 25px auto 25px auto;
-        width: 250px;
         text-align: center;
     }
 

@@ -194,6 +194,14 @@ $(function () {
             tryShowID(userID);
         }
     });
+
+    /*Handle contact in case of click on privacy*/
+    let contact = getUrlParameter('contact');
+    if(contact) {
+        $('html, body').animate({
+            scrollTop: $('#section-contact').offset().top
+        }, 1000);
+    }
 });
 
 function tryShowID(id) {
@@ -494,8 +502,10 @@ function shareFacebookStory(id)
         method: 'share_open_graph',
         action_type: 'og.likes',
         action_properties: JSON.stringify({
-            object:'https://www.musicmindproject.com\/?id=' + id,
-            image:'https://www.musicmindproject.com/image/' + filePath + '.png'
+            object: 'https://www.musicmindproject.com\/?id=' + id,
+            image: 'https://www.musicmindproject.com/image/' + filePath + '.png',
+            description: 'TODO insert description',
+            title: 'TODO insert title'
         })
     }, function(response){});
 }
