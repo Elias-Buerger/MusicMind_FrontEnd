@@ -104,18 +104,15 @@ $(function () {
     
     /*Get statistics from server and notify user on error*/
     $.get('https://www.musicmindproject.com:8443/backend/rest/analytics/pageclicks', function (data, status) {
-        if (status !== 'success') printMessage(false, 'Error ' + status, 'Could not request Page clicks from server!');
-        else $('#section-statistics-pageclicks').text(data);
+        if (status === 'success') $('#section-statistics-pageclicks').text(data);
     });
 
     $.get('https://www.musicmindproject.com:8443/backend/rest/analytics/personalitycount', function (data, status) {
-        if (status !== 'success') printMessage(false, 'Error ' + status, 'Could not request Personality count from server!');
-        else $('#section-statistics-personalitycount').text(data);
+        if (status === 'success') $('#section-statistics-personalitycount').text(data);
     });
 
     $.get('https://www.musicmindproject.com:8443/backend/rest/analytics/shared', function (data, status) {
-        if (status !== 'success') printMessage(false, 'Error ' + status, 'Could not request shares from server!');
-        else $('#section-statistics-shared').text(data);
+        if (status === 'success') $('#section-statistics-shared').text(data);
     });
 
     /*setup contact form and send data to server*/
@@ -131,7 +128,6 @@ $(function () {
             data: postData
         });
         form.trigger('reset');
-        printMessage(true, 'Thank you!', 'Thank you for your help!');
         ga('send', 'event', 'contact', 'send', postData);
         return false;
     });
@@ -188,9 +184,7 @@ $(function () {
 function tryShowID(id) {
     if(id !== undefined) {
         $.get('https://www.musicmindproject.com:8443/backend/rest/music/' + id, function (data, status) {
-            if (status !== 'success') {
-                printMessage('Error ' + status, 'Could not request Question Count from server!');
-            } else {
+            if (status === 'success') {
                 if(data !== null && data !== 'null') {
                     personality = {
                         'neuroticism': data['neuroticism'],
@@ -210,7 +204,6 @@ function tryShowID(id) {
                     displayPersonality();
                 }
             }
-
         });
     }
 }
@@ -261,19 +254,6 @@ function transitionFromTo(from, to) {
 }
 
 /*-------------------------------------------------------------*/
-/*Print error and success messages to user*/
-/*-------------------------------------------------------------*/
-function printMessage(positive, title, message) {
-    if(!positive) ga('send', 'error', title + ":\n" + message);
-
-    $('#section-modal-title').text(title);
-    $('#section-modal-text').text(message);
-    $('#section-modal-button').addClass(positive ? 'btn-success' : 'btn-danger');
-    $('#section-modal-button').removeClass(positive ? 'btn-danger' : 'btn-success');
-    $('#section-modal').modal();
-}
-
-/*-------------------------------------------------------------*/
 /*Show question form*/
 /*-------------------------------------------------------------*/
 function startQuestions() {
@@ -282,9 +262,7 @@ function startQuestions() {
         ['#section-main-question', '#section-main-answers', '#section-main-text', '#section-main-progress', '#section-main-back']
     );
     $.get('https://www.musicmindproject.com:8443/backend/rest/question/questionCount', function (data, status) {
-        if (status !== 'success') {
-            printMessage('Error ' + status, 'Could not request Question Count from server!');
-        } else {
+        if (status === 'success') {
             questionCount = parseInt(data);
             questionID = 0;
             displayQuestion();
@@ -301,9 +279,7 @@ function displayQuestion() {
     }, 100);
 
     $.get('https://www.musicmindproject.com:8443/backend/rest/question/' + questionID + '/en', function (data, status) {
-        if (status !== 'success') {
-            printMessage('Error ' + status, 'Could not request Question Nr.' + questionID + ' from server!');
-        } else {
+        if (status === 'success') {
             if(questionID == questionCount - 1) {
                 transitionFromTo(
                     ['#section-main-question', '#section-main-answers', '#section-main-text', '#section-main-progress', '#section-main-back'],
@@ -390,7 +366,6 @@ function displayPersonality() {
         });
     }
 }
-
 
 /*-------------------------------------------------------------*/
 /*Play or pause current music*/

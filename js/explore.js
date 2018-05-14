@@ -72,10 +72,7 @@ function updateMusic() {
         clearItems();
     }
     $.get('https://www.musicmindproject.com:8443/backend/rest/music/' + query + '/' + (page * 40) + '/' + ((page + 1) * 40), function (data, status) {
-        if (status !== 'success') {
-            printMessage(false, 'Error ' + status, 'Could not request Page clicks from server!');
-        }
-        else {
+        if (status === 'success') {
             $.each(data, function(key, value) {
                 createItem(value);
             });
@@ -133,19 +130,6 @@ function createItem(data) {
     });
 
     items.append(item);
-}
-
-/*-------------------------------------------------------------*/
-/*Print error and success messages to user*/
-/*-------------------------------------------------------------*/
-function printMessage(positive, title, message) {
-    if(!positive) ga('send', 'error', title + ':\n' + message);
-
-    $('#section-modal-title').text(title);
-    $('#section-modal-text').text(message);
-    $('#section-modal-button').addClass(positive ? 'btn-success' : 'btn-danger');
-    $('#section-modal-button').removeClass(positive ? 'btn-danger' : 'btn-success');
-    $('#section-modal').modal();
 }
 
 /*-------------------------------------------------------------*/
