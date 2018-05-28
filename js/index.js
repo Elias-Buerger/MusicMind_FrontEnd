@@ -1,6 +1,7 @@
 let answers = {};
 let questionCount = 0;
 let musicPlaying = false;
+let musicPlayed = false;
 let questionCompleted = true;
 let personality = undefined;
 let filePath = undefined;
@@ -77,17 +78,18 @@ $(function () {
     });
 
     $('#section-main-actions-share-instagram').on("click", function () {
-        $.get('https://www.musicmindproject.com:8443/backend/rest/music/video/' + filePath, success = () => downloadVideo());
+        shareInstagram();
+        share("instagram");
     });
 
     $('#section-main-actions-share-facebook').on("click", function () {
-        shareFacebookStory(userID);
+        shareFacebookStory();
+        share("facebook");
     });
 
     $('#section-main-actions-share-twitter').on("click", function () {
-        let width = screen.width/2.5;
-        let height = screen.height/2.5;
-        window.open("https://twitter.com/intent/tweet?hashtags=MusicMind&original_referer=https%3A%2F%2Fmusicmindproject.com%2Findex.html&ref_src=twsrc%5Etfw&related=musicmindprjct&text=Take%20a%20look%20at%20my%20personal%20music%20track%2C%20generated%20by%20%40musicmindprjct&tw_p=tweetbutton&url=https%3A%2F%2Fwww.musicmindproject.com%2F%3Fid%3D" + userID, "", "width="+ width +",height="+height);
+        shareTwitter();
+        share("twitter");
     });
 
     $('#section-main-back a').click(function () {
@@ -375,6 +377,20 @@ function playMusic() {
     audio.src = 'https://www.musicmindproject.com:443/music/' + filePath + '.mp3';
     audio.play();
     musicPlaying = true;
+
+    if(musicPlayed === false && foreignID !== undefined) {
+        musicPlayed = true;
+        let play = {
+            player: userID,
+            played: foreignID
+        };
+        $.ajax({
+            url: 'https://www.musicmindproject.com:8443/backend/rest/music/play',
+            contentType: 'application/json; charset=utf-8',
+            type: 'POST',
+            data: JSON.stringify(play)
+        });
+    }
 }
 
 function pauseMusic() {
@@ -432,9 +448,10 @@ function getUrlParameter(sParam) {
 /*Social media sharing*/
 /*-------------------------------------------------------------*/
 
-function shareFacebookStory(id)
+function shareFacebookStory()
 {
     let username = filePath.substr(filePath.indexOf('_')+1);
+    let id = (foreignID === undefined) ? userID : foreignID;
     FB.ui({
         method: 'share_open_graph',
         action_type: 'og.likes',
@@ -449,4 +466,34 @@ function shareFacebookStory(id)
             }
         })
     }, function(response){});
+}
+
+function shareTwitter() {
+    let width = screen.width/2.5;
+    let height = screen.height/2.5;
+    if(foreignID === undefined) {
+        window.open("https://twitter.com/intent/tweet?hashtags=MusicMind&original_referer=https%3A%2F%2Fmusicmindproject.com%2Findex.html&ref_src=twsrc%5Etfw&related=musicmindprjct&text=Take%20a%20look%20at%20my%20personal%20music%20track%2C%20generated%20by%20%40musicmindprjct&tw_p=tweetbutton&url=https%3A%2F%2Fwww.musicmindproject.com%2F%3Fid%3D" + userID, "", "width="+ width +",height="+height);
+    } else {
+        window.open("https://twitter.com/intent/tweet?hashtags=MusicMind&original_referer=https%3A%2F%2Fmusicmindproject.com%2Findex.html&ref_src=twsrc%5Etfw&related=musicmindprjct&text=Take%20a%20look%20at%this%20music%20track%2C%20generated%20by%20%40musicmindprjct&tw_p=tweetbutton&url=https%3A%2F%2Fwww.musicmindproject.com%2F%3Fid%3D" + foreignID, "", "width="+ width +",height="+height);
+    }
+}
+
+function shareInstagram() {
+    $.get('https://www.musicmindproject.com:8443/backend/rest/music/video/' + filePath, success = () => {
+        downloadVideo();
+    });
+}
+
+function share(shareType) {
+    let share = {
+        share: userID,
+        shared: (foreignID === undefined) ? userID : foreignID,
+        type: shareType
+    };
+    $.ajax({
+        url: 'https://www.musicmindproject.com:8443/backend/rest/music/share',
+        contentType: 'application/json; charset=utf-8',
+        type: 'POST',
+        data: JSON.stringify(share)
+    });
 }
