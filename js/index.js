@@ -59,10 +59,12 @@ $(function () {
         }, 1000);
     });
 
+    /*show questions on start click*/
     $('#section-main-button button').click(function () {
         startQuestions();
     });
 
+    /*play or pause music on play click*/
     $('#section-main-actions-play').click(function() {
         if(musicPlaying) {
             pauseMusic();
@@ -73,33 +75,40 @@ $(function () {
         }
     });
 
+    /*download mp3 on download click*/
     $('#section-main-actions-download').click(function () {
         downloadMusic();
     });
 
+    /*share via instagram on icon click*/
     $('#section-main-actions-share-instagram').on("click", function () {
         shareInstagram();
         share("instagram");
     });
 
+    /*share via facebook on icon click*/
     $('#section-main-actions-share-facebook').on("click", function () {
         shareFacebookStory();
         share("facebook");
     });
 
+    /*share via twitter on icon click*/
     $('#section-main-actions-share-twitter').on("click", function () {
         shareTwitter();
         share("twitter");
     });
 
+    /*undo question on back click*/
     $('#section-main-back a').click(function () {
         undoQuestion();
     });
 
+    /*Get answer id on answer button click and complete question*/
     $('#section-main-answers button').click(function () {
         completeQuestion($(this).children().attr('id')[20]);
     });
 
+    /*store name on name button click*/
     $('#section-main-name button').click(function () {
         completeQuestion($('#section-main-name-input').val());
     });
@@ -183,6 +192,9 @@ $(function () {
     }
 });
 
+/*-------------------------------------------------------------*/
+/*If an id is provided, try to show users personality and enable download*/
+/*-------------------------------------------------------------*/
 function tryShowID(id) {
     if(id !== undefined) {
         $.get('https://www.musicmindproject.com:8443/backend/rest/music/' + id, function (data, status) {
@@ -447,7 +459,6 @@ function getUrlParameter(sParam) {
 /*-------------------------------------------------------------*/
 /*Social media sharing*/
 /*-------------------------------------------------------------*/
-
 function shareFacebookStory()
 {
     let username = filePath.substr(filePath.indexOf('_')+1);
@@ -484,7 +495,11 @@ function shareInstagram() {
     });
 }
 
+/*-------------------------------------------------------------*/
+/*Increase share count on share*/
+/*-------------------------------------------------------------*/
 function share(shareType) {
+    ga('send', 'share');
     let share = {
         share: userID,
         shared: (foreignID === undefined) ? userID : foreignID,

@@ -1,7 +1,6 @@
 /*-------------------------------------------------------------*/
 /*Download and init google analytics*/
 /*-------------------------------------------------------------*/
-
 (function (i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function () {
@@ -26,6 +25,7 @@ let query = 'newest';
 
 $(function () {
 
+    /*store own id (for play count)*/
     ga(function(tracker) {
         userID = tracker.get('clientId');
     });
@@ -41,11 +41,13 @@ $(function () {
         }, 1000);
     });
 
+    /*Load more personalities on more click*/
     $('#section-more a').click(function() {
         page++;
         updateMusic();
     });
 
+    /*Search for name*/
     $('#section-header-search').change(function() {
         page = 0;
         query = $(this).val();
@@ -53,12 +55,14 @@ $(function () {
         updateMusic();
     });
 
+    /*Show hottest*/
     $('#section-header-a-1').click(function() {
         page = 0;
         query = 'hottest';
         updateMusic();
     });
 
+    /*Show newest*/
     $('#section-header-a-2').click(function() {
         page = 0;
         query = 'newest';
@@ -68,6 +72,9 @@ $(function () {
     updateMusic();
 });
 
+/*-------------------------------------------------------------*/
+/*Update the grid by loading new personalities, depending on request*/
+/*-------------------------------------------------------------*/
 function updateMusic() {
     if(page == 0) {
         clearItems();
@@ -81,10 +88,16 @@ function updateMusic() {
     });
 }
 
+/*-------------------------------------------------------------*/
+/*Clear grid*/
+/*-------------------------------------------------------------*/
 function clearItems() {
     $('#section-elements > .row').empty();
 }
 
+/*-------------------------------------------------------------*/
+/*Create one grid item with one personality*/
+/*-------------------------------------------------------------*/
 function createItem(data) {
     let styles = ['light', 'medium'];
     let items = $('#section-elements > .row');
